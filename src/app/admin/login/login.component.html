@@ -1,0 +1,19 @@
+<main class="container-fluid">
+    <!--login form with username an password-->
+    <form [formGroup]="checkoutForm" class="form-signin" (ngSubmit)="login()">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="username" class="sr-only">Email address</label>
+        <input type="text" id="usuario" class="form-control" placeholder="Usuario" required autofocus formControlName="usuario"  name="usuario">
+        <label for="contraseña" class="sr-only">Password</label>
+        <input type="password" id="contraseña" class="form-control" placeholder="Password" required formControlName="contraseña"  name="contraseña">
+        <!--por si hay tiempo-->
+       <!-- 
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me" id="remember-me" name="remember-me"> Remember me
+            </label>
+        </div>
+        -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</main>

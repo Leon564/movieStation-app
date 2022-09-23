@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { PeliculaDTO } from '../dto/pelicula-DTO';
+import { PeliculaDTO } from 'src/app/dto/pelicula-DTO';
 const API_URL ='https://movie-station.onrender.com/peliculas';
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PeliculaDTO } from '../dto/pelicula-DTO';
-import { PeliculasService } from '../services/peliculas.service';
+import { PeliculasService } from '../services/peliculas/peliculas.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 

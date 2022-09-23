@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculaDTO } from '../dto/pelicula-DTO';
-import { PeliculasService } from '../services/peliculas.service';
+import { PeliculasService } from '../services/peliculas/peliculas.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
