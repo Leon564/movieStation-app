@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="col-12">
+    <h1 class="text-center"><i class="fa-solid fa-list"></i> {{ titulo }}</h1>
+
+    <table class="table">
+      <thead class="table-custom">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col" class="text-center">Nombre</th>
+          <th scope="col" class="text-center">Año de lanzamiento</th>
+          <th scope="col" class="text-center">Capitulos</th>
+          <th scope="col" class="text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pelicula of peliculas">
+          <!-- // inicia el for-->
+          <th scope="row">{{ pelicula._id }}</th>
+          <td class="text-center">{{ pelicula.nombre | uppercase }}</td>
+          <!--usando pipe uppercase-->
+          <td class="text-center">{{ pelicula.estreno }}</td>
+          <td class="text-center">{{ pelicula.genero }}</td>
+          <!-- length da el numero de elementos que tiene un array-->
+          <td class="text-center">
+            <a routerLink="/pelicula/{{ pelicula._id }}" class="btn btn-action"
+              ><i class="fa-solid fa-circle-right"></i
+            ></a>
+          </td>
+        </tr>
+        <!--// fin de tr y ciclo for-->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><b> Total de animes mostrados:</b></td>
+          <td colspan="4" style="color: purple">
+            <i class="fa-solid fa-file"></i> {{ peliculas.length }}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

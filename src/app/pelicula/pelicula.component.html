@@ -1,0 +1,32 @@
+<main class="container-fluid">
+    <div class="row">
+    
+  
+      <div class="col-3 pt-5">
+        <img [src]="pelicula.portada" [alt]="pelicula.nombre" class="img-fluid" />
+      </div>
+      <div class="col-9 row h-100 mt-5">
+        <div class="col-12 text-center">
+          <h1 class="title">{{ pelicula.nombre }}</h1>
+        </div>  
+        <div class="anime-item col"><b>Genero:</b> {{ pelicula.genero }}</div>
+  
+        <div class="anime-item col"> <b> Año de estreno:</b> {{ pelicula.estreno }}</div>
+  
+        <div class="anime-item col"><b>Duración </b>{{ pelicula["duración"]}}</div>
+  
+        <div class="anime-item col"><b>Director: </b>{{ pelicula.director }}</div>
+  
+        <p class="about mt-2  pt-3 pb-3">{{ pelicula.sinopsis }}</p>
+      </div>
+    <div class="col-12 text-center mt-5"> 
+      <div class="col-6">
+        <h2>trailer</h2>
+      </div>
+      <iframe [src]="safeSrc" frameborder="0" scrolling="no" allowFullscreen></iframe>
+      
+    </div>
+  
+    </div>
+  </main>
+  
