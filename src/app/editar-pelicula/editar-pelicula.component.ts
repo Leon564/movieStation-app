@@ -38,6 +38,9 @@ export class EditarPeliculaComponent implements OnInit {
       this.id = params['id'];
       this.service.getOne(this.id).subscribe((pelicula: any) => {
         this.checkoutForm.patchValue(pelicula.obtener);
+      }, (error: any) => {
+        alert("Pelicula no encontrada");
+        this.router.navigate(['/']);
       });
     });
   }
