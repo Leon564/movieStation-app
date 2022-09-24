@@ -8,6 +8,8 @@ import { ListPeliculasComponent } from './list-peliculas/list-peliculas.componen
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { LoginComponent } from './admin/login/login.component';
 import { RegisterComponent } from './admin/register/register.component';
+import { CrearPeliculaComponent } from './crear-pelicula/crear-pelicula.component';
+import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { RegisterComponent } from './admin/register/register.component';
     ListPeliculasComponent,
     PeliculaComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CrearPeliculaComponent,
+    EditarPeliculaComponent
   ],
   imports: [
     BrowserModule,
