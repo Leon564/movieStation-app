@@ -11,6 +11,8 @@ import { RegisterComponent } from './admin/register/register.component';
 import { CrearPeliculaComponent } from './crear-pelicula/crear-pelicula.component';
 import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 import { NavbarComponent } from './admin/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -22,14 +24,16 @@ import { NavbarComponent } from './admin/navbar/navbar.component';
     RegisterComponent,
     CrearPeliculaComponent,
     EditarPeliculaComponent,
-    NavbarComponent
+    NavbarComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
