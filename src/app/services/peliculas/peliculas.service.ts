@@ -25,4 +25,8 @@ export class PeliculasService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.patch(`${API_URL}/${id}`, data, { headers });
   }
+  delete(id: string, token: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${API_URL}/${id}`, { headers });
+  }
 }

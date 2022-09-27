@@ -10,6 +10,7 @@ import { LoginComponent } from './admin/login/login.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { CrearPeliculaComponent } from './crear-pelicula/crear-pelicula.component';
 import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
+import { NavbarComponent } from './admin/navbar/navbar.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
     LoginComponent,
     RegisterComponent,
     CrearPeliculaComponent,
-    EditarPeliculaComponent
+    EditarPeliculaComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

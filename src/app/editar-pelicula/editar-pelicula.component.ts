@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PeliculaDTO } from '../dto/pelicula-DTO';
+import { AuthService } from '../services/auth/auth.service';
 import { PeliculasService } from '../services/peliculas/peliculas.service';
 
 @Component({
@@ -18,8 +19,11 @@ export class EditarPeliculaComponent implements OnInit {
     private route: ActivatedRoute,
     private form: FormBuilder,
     private service: PeliculasService,
+    private auth: AuthService,
     private router: Router
-  ) {}
+  ) {
+    if (!this.auth.isLog) this.router.navigate(['/auth/login']);
+  }
 
   checkoutForm = this.form.group({
     nombre: '',
@@ -36,12 +40,15 @@ export class EditarPeliculaComponent implements OnInit {
     //get id from url
     this.paramsubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
-      this.service.getOne(this.id).subscribe((pelicula: any) => {
-        this.checkoutForm.patchValue(pelicula.obtener);
-      }, (error: any) => {
-        alert("Pelicula no encontrada");
-        this.router.navigate(['/']);
-      });
+      this.service.getOne(this.id).subscribe(
+        (pelicula: any) => {
+          this.checkoutForm.patchValue(pelicula.obtener);
+        },
+        (error: any) => {
+          alert('Pelicula no encontrada');
+          this.router.navigate(['/']);
+        }
+      );
     });
   }
 
@@ -52,14 +59,19 @@ export class EditarPeliculaComponent implements OnInit {
         this.id,
         localStorage.getItem('token')!
       )
-      .subscribe((data: any) => {
-        if (data.status === 406) {
-          localStorage.removeItem('token');
-          alert(data.message);
+      .subscribe(
+        (data: any) => {         
+          if (data.status === 404) return alert('server error');
+          alert(data.mensaje);
+          this.router.navigate(['/']);
+        },
+        (error: any) => {
+          if (error.status === 401) {
+            alert('sesion expirada');
+            return this.auth.logOut();            
+          }
+          return alert('Error al editar pelicula');
         }
-        if (data.status === 404) return alert('server error');
-        alert(data.mensaje);
-        this.router.navigate(['/']);
-      });
+      );
   }
 }

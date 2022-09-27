@@ -21,10 +21,19 @@
           <td class="text-center">{{ pelicula.estreno }}</td>
           <td class="text-center">{{ pelicula.genero }}</td>
           <!-- length da el numero de elementos que tiene un array-->
-          <td class="text-center">
-            <a routerLink="/pelicula/{{ pelicula._id }}" class="btn btn-action"
-              ><i class="fa-solid fa-circle-right"></i
-            ></a>
+          <td class="text-center" >
+            <a routerLink="/pelicula/{{ pelicula._id }}" class="btn btn-action text-info">
+              ver
+            </a>
+            <a
+              routerLink="/pelicula/editar/{{ pelicula._id }}"
+              class="btn btn-action text-info"
+            >
+              editar
+            </a>
+            <a (click)="eliminar(pelicula._id)" class="btn btn-action text-danger">
+              eliminar
+            </a>
           </td>
         </tr>
         <!--// fin de tr y ciclo for-->

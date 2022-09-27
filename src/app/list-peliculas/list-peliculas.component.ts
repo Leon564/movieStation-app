@@ -18,4 +18,14 @@ export class ListPeliculasComponent implements OnInit {
       this.peliculas = peliculas.GetAll;
     });      
   }
+  eliminar(id: string) {
+    this.service.delete(id, localStorage.getItem('token')!).subscribe({
+      complete() {
+        location.reload();
+      },
+      error(error) {
+        alert('error');
+      }
+    });
+  }
 }
