@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginDTO } from 'src/app/dto/login-DTO';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,19 +15,28 @@ export class LoginComponent implements OnInit {
   constructor(private form:FormBuilder, private service: AuthService,private router:Router) { }
   
   checkoutForm = this.form.group({
-    usuario: '',
-    contraseña: ''
+    usuario: ['', Validators.required],
+    contraseña: ['', Validators.required]
   });
 
   ngOnInit(): void {
   }
+
   login(){
     this.service.login(<LoginDTO>this.checkoutForm.value).subscribe((data:any)=>{
-      if(data.status == 406) return alert(data.message);        
+      if(data.status == 406) return this.erroralert();        
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('usuario', this.checkoutForm.value.usuario!);
       this.router.navigate(['/']);
     });
   }
-
+  erroralert(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Usuario o contraseña invalidos',
+      showConfirmButton: true,
+    })
+  }
+  
 }
