@@ -1,19 +1,29 @@
-<main class="container-fluid">
-    <!--login form with username an password-->
-    <form [formGroup]="checkoutForm" class="form-signin" (ngSubmit)="login()">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="username" class="sr-only">Email address</label>
-        <input type="text" id="usuario" class="form-control" placeholder="Usuario" required autofocus formControlName="usuario"  name="usuario">
-        <label for="contraseña" class="sr-only">Password</label>
-        <input type="password" id="contraseña" class="form-control" placeholder="Password" required formControlName="contraseña"  name="contraseña">
-        <!--por si hay tiempo-->
-       <!-- 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me" id="remember-me" name="remember-me"> Remember me
-            </label>
-        </div>
-        -->
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-</main>
+<div class="container">
+        <mat-toolbar style="margin-top:20px;">
+            <span>Inicio de sesion</span>
+        </mat-toolbar>
+        <mat-card style="margin-top: 20px;" >
+        <form [formGroup]="checkoutForm" (ngSubmit)="login()">
+            <mat-grid-list cols="2" rowHeight="70px">
+                <mat-grid-tile [colspan]="2" [rowspan]="2">
+                    <img src="./assets/img/logo.svg" alt="logo">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput formControlName="usuario">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput type="password" formControlName="contraseña">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button type="submit"  mat-raised-button color="primary" class="ancho">Login</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>
