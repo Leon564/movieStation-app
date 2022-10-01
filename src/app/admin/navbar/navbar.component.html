@@ -1,3 +1,47 @@
-<div [hidden]="false" class="navbar" style="height: 50px;width: 100%;background-color:blue ;">
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" routerLink="/" style="height: 100%; width: auto;">
+    <img src="./assets/img/Logo.png" alt="Logo" style="height: 100%; width: 100%;" />
+  </button>
 
-</div>
+  <span class="example-spacer"></span>
+  <form [formGroup]="checkoutForm" (ngSubmit)="buscarPelicula()">
+    <mat-form-field appearance="legacy">
+      <mat-label>Buscar peliculas</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="search"
+        placeholder="{{ Buscar }}"
+        name="search"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>  
+  </form>
+  <button *ngIf="!isLog" mat-raised-button color="primary" style="margin-left: 25px;">
+    <a
+      routerLink="/auth/login"
+      style="color: #fff; margin-right: 5px; text-decoration: none"
+    >
+      Inicio Sesion</a
+    >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <button *ngIf="isLog" mat-raised-button color="primary" routerLink="/pelicula/lista"  style="margin-left: 25px;">
+    <a style="color: #fff; margin-right: 5px; text-decoration: none"
+    
+    ></a>
+    <mat-icon>apps</mat-icon>
+  </button>
+
+  <button *ngIf="isLog" mat-raised-button color="primary" (click)="logOut()"  style="margin-left: 25px;">
+    <a
+          
+      style="color: #fff; margin-right: 5px; text-decoration: none"
+    >
+      </a
+    >
+    <mat-icon>exit_to_app</mat-icon>
+  </button>  
+  
+</mat-toolbar>

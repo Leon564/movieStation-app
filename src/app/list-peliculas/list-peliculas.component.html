@@ -1,14 +1,27 @@
 <div class="container-fluid">
   <div class="col-12">
-    <h1 class="text-center"><i class="fa-solid fa-list"></i> {{ titulo }}</h1>
-
+    <h1 class="text-center">
+      <b>{{ titulo }}</b>
+    </h1>
+    <div style="width: 100%;">
+      <button mat-raised-button color="accent" routerLink="/pelicula/crear"  style="margin-left: 25px;">
+        <a style="color: #fff; margin-right: 5px; text-decoration: none"       
+        > Agregar Pelicula </a>
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-raised-button color="accent" routerLink="/pelicula/crear"  style="margin-left: 25px;">
+        <a style="color: #fff; margin-right: 5px; text-decoration: none"       
+        > Agregar Admin </a>
+        <mat-icon >person_add</mat-icon>
+      </button>
+    </div>
     <table class="table">
       <thead class="table-custom">
         <tr>
           <th scope="col">Id</th>
           <th scope="col" class="text-center">Nombre</th>
-          <th scope="col" class="text-center">Año de lanzamiento</th>
-          <th scope="col" class="text-center">Capitulos</th>
+          <th scope="col" class="text-center">Lanzamiento</th>
+          <th scope="col" class="text-center">Genero</th>
           <th scope="col" class="text-center">Acciones</th>
         </tr>
       </thead>
@@ -21,8 +34,11 @@
           <td class="text-center">{{ pelicula.estreno }}</td>
           <td class="text-center">{{ pelicula.genero }}</td>
           <!-- length da el numero de elementos que tiene un array-->
-          <td class="text-center" >
-            <a routerLink="/pelicula/{{ pelicula._id }}" class="btn btn-action text-info">
+          <td class="text-center">
+            <a
+              routerLink="/pelicula/{{ pelicula._id }}"
+              class="btn btn-action text-info"
+            >
               ver
             </a>
             <a
@@ -31,21 +47,16 @@
             >
               editar
             </a>
-            <a (click)="eliminar(pelicula._id)" class="btn btn-action text-danger">
+            <a
+              (click)="eliminar(pelicula._id)"
+              class="btn btn-action text-danger"
+            >
               eliminar
             </a>
           </td>
         </tr>
         <!--// fin de tr y ciclo for-->
       </tbody>
-      <tfoot>
-        <tr>
-          <td><b> Total de animes mostrados:</b></td>
-          <td colspan="4" style="color: purple">
-            <i class="fa-solid fa-file"></i> {{ peliculas.length }}
-          </td>
-        </tr>
-      </tfoot>
     </table>
   </div>
 </div>

@@ -16,6 +16,9 @@ export class PeliculasService {
   getOne(id: string) {
     return this.http.get<PeliculaDTO>(`${API_URL}/${id}`);
   }
+  getByName(name: string) {
+    return this.http.get<PeliculaDTO[]>(`${API_URL}/find?name=${name}`);
+  }
   create(data: PeliculaDTO, token: string) {
     console.log(token);
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

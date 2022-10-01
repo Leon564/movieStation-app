@@ -13,7 +13,15 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
 import { NavbarComponent } from './admin/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
+import { BuscadorComponent } from './buscador/buscador.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,7 +33,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     CrearPeliculaComponent,
     EditarPeliculaComponent,
     NavbarComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +42,16 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

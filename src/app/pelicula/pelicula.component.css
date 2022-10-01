@@ -1,0 +1,27 @@
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+}
+
+.pelicula-info {
+  padding: 60px;
+}
+
+.pelicula-trailer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pelicula-trailer h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+.pelicula-trailer iframe {
+  width: 1000px;
+  height: 600px;
+}
