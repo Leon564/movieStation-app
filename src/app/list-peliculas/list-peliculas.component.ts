@@ -3,6 +3,7 @@ import { PeliculaDTO } from '../dto/pelicula-DTO';
 import { PeliculasService } from '../services/peliculas/peliculas.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-peliculas',
@@ -20,14 +21,41 @@ export class ListPeliculasComponent implements OnInit {
       this.peliculas = peliculas.GetAll;
     });      
   }
-  eliminar(id: string) {
-    this.service.delete(id, localStorage.getItem('token')!).subscribe({
-      complete() {
-        location.reload();
-      },
-      error(error) {
-        alert('error');
+eliminar(id: string) {
+    //question de sweetalert para confirmar la eliminacion
+    Swal.fire({
+      title: '¿Estas seguro de eliminar la pelicula?',
+      text: "No podras revertir esta accion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.delete(id, localStorage.getItem('token')!).subscribe({
+          complete() {
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Pelicula eliminada con exito',
+              showConfirmButton: true,
+            }).then(() => {
+              window.location.reload();
+            });
+          },
+          error(error) {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Error al eliminar la pelicula',
+              showConfirmButton: true,
+            })
+          }
+        });
       }
-    });
+    }
+    )
   }
+
 }
