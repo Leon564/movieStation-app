@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ListPeliculasComponent } from './list-peliculas.component';
 
@@ -8,9 +11,9 @@ describe('ListPeliculasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListPeliculasComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientModule],
+      declarations: [ListPeliculasComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ListPeliculasComponent);
     component = fixture.componentInstance;

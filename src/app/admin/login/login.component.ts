@@ -8,12 +8,15 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  constructor(
+    private form: FormBuilder,
+    private service: AuthService,
+    private router: Router
+  ) {}
 
-  constructor(private form:FormBuilder, private service: AuthService,private router:Router) { }
-  
   checkoutForm = this.form.group({
     usuario: ['', Validators.required],
     contraseña: ['', Validators.required]
