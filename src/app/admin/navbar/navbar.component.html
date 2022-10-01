@@ -1,9 +1,29 @@
-<div [hidden]="false" class="navbar" style="height: 50px;width: 100%;background-color:blue ;">
-   <!--Buscador-->
-   <div  class="float-end">
-        <form [formGroup]="checkoutForm" (ngSubmit)="buscarPelicula()">
-            <input type="text" formControlName="search" placeholder="{{Buscar}}" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-</div>
+<mat-toolbar>
+  <button mat-icon-button class="example-icon">
+    <img src="/src/assets/logo.svg" alt="Logo" />
+  </button>
+
+  <span class="example-spacer"></span>
+  <form [formGroup]="checkoutForm" (ngSubmit)="buscarPelicula()">
+    <mat-form-field appearance="legacy">
+      <mat-label>Buscar peliculas</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="search"
+        placeholder="{{ Buscar }}"
+        name="search"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="margin-left: 25px">
+      <a
+        href="auth/login"
+        style="color: #fff; margin-right: 5px; text-decoration: none"
+      >
+        Inicio Sesion</a
+      >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </form>
+</mat-toolbar>

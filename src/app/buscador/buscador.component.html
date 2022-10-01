@@ -1,15 +1,28 @@
-<div class="container-fluid">
-<div class="row">
-    <div class="col-2" *ngFor="let pelicula of peliculas">
-        <div class="card">
-            <img class="card-img-top "  height="300px" src="{{ pelicula.portada }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{ pelicula.nombre }}</h5>
-                <p class="card-text">{{ (pelicula.sinopsis.length>50)? (pelicula.sinopsis | slice:0:50)+'..':(pelicula.sinopsis)  }}</p>
-                <a href="/pelicula/{{pelicula._id}}" class="btn btn-primary">Go somewhere</a>
-            </div>
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="5:8" gutterSize="10px">
+    <mat-grid-tile class="cab" *ngFor="let pelicula of peliculas">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{ pelicula.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ pelicula.estreno }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="figure">
+          <img
+            mat-card-image
+            src="{{ pelicula.portada }}"
+            alt="portada de pelicula"
+          />
+          <div class="capa">
+            <button
+              mat-raised-button
+              color="primary"
+              routerLink="/pelicula/{{ pelicula._id }}"
+            >
+              Ver más
+            </button>
+          </div>
         </div>
-    </div>
-</div>
-
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

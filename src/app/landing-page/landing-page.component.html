@@ -1,1 +1,28 @@
-<p>landing-page works!</p>
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="5:8" gutterSize="10px">
+    <mat-grid-tile class="cab" *ngFor="let pelicula of peliculas">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title>{{ pelicula.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ pelicula.estreno }}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="figure">
+          <img
+            mat-card-image
+            src="{{ pelicula.portada }}"
+            alt="portada de pelicula"
+          />
+          <div class="capa">
+            <button
+              mat-raised-button
+              color="primary"
+              routerLink="/pelicula/{{ pelicula._id }}"
+            >
+              Ver más
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
