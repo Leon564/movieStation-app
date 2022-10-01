@@ -17,9 +17,9 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>  
   </form>
-  <button *ngIf="!isLog" mat-raised-button color="primary" style="margin-left: 25px;">
+  <button *ngIf="!isLog" mat-raised-button color="primary" 
+  routerLink="/auth/login" style="margin-left: 25px;">
     <a
-      routerLink="/auth/login"
       style="color: #fff; margin-right: 5px; text-decoration: none"
     >
       Inicio Sesion</a
