@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       if(data.status == 406) return this.erroralert();        
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('usuario', this.checkoutForm.value.usuario!);
-      this.router.navigate(['/']);
+      this.router.navigate(['/pelicula/lista']);
     });
   }
   erroralert(){

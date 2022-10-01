@@ -11,7 +11,7 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
-  { path: 'pelicula/list', component: ListPeliculasComponent },
+  { path: 'pelicula/lista', component: ListPeliculasComponent },
   { path: 'pelicula/buscar', component: BuscadorComponent },
   { path: 'pelicula/crear', component: CrearPeliculaComponent },
   { path: 'pelicula/editar/:id', component: EditarPeliculaComponent },
