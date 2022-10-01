@@ -24,7 +24,9 @@ export class RegisterComponent implements OnInit {
     contraseña: ['', Validators.required],
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(!this.service.isLog) return this.service.redirect();
+  }
   register() {
     if (!this.checkoutForm.valid) return this.alerterrorValid();
     this.service

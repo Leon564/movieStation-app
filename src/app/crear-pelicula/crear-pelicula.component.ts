@@ -29,6 +29,7 @@ export class CrearPeliculaComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if(!this.auth.isLog) return this.auth.redirect();
   }
   crear(){
     if(!this.checkoutForm.valid) return this.alerterrorValid();

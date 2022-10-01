@@ -39,6 +39,7 @@ export class EditarPeliculaComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if(!this.auth.isLog) return this.auth.redirect();
     this.paramsubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.service.getOne(this.id).subscribe(

@@ -31,4 +31,9 @@ export class AuthService {
     });
     
   }
+  redirect(){
+    this.router.navigate(['/']).then(() => {
+      window.location.reload();
+    });
+  }
 }
