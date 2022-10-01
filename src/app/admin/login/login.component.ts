@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    if(this.service.isLog){
+      this.router.navigate(['/pelicula/lista']).then(() => {
+        window.location.reload();
+      });
+    }
   }
 
   login(){
