@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   login(){
     if(!this.checkoutForm.valid) return this.errorNulldata();
     this.service.login(<LoginDTO>this.checkoutForm.value).subscribe((data:any)=>{
-      if(data.status == 406) return this.erroralert();        
+      if(data.status == 406 || !data.access_token) return this.erroralert();        
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('usuario', this.checkoutForm.value.usuario!);
       this.router.navigate(['/pelicula/lista']).then(() => {
