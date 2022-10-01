@@ -1,6 +1,6 @@
 <mat-toolbar>
-  <button mat-icon-button class="example-icon">
-    <img src="./assets/img/logo.svg" alt="Logo" />
+  <button mat-icon-button class="example-icon" routerLink="/" style="height: 100%; width: auto;">
+    <img src="./assets/img/Logo.png" alt="Logo" style="height: 100%; width: 100%;" />
   </button>
 
   <span class="example-spacer"></span>
@@ -17,7 +17,7 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>  
   </form>
-  <button mat-raised-button color="primary" style="margin-left: 25px">
+  <button *ngIf="!isLog" mat-raised-button color="primary" style="margin-left: 25px;">
     <a
       routerLink="/auth/login"
       style="color: #fff; margin-right: 5px; text-decoration: none"
@@ -26,4 +26,14 @@
     >
     <mat-icon>account_circle</mat-icon>
   </button>
+  <button *ngIf="isLog" mat-raised-button color="primary" (click)="logOut()"  style="margin-left: 25px;">
+    <a
+          
+      style="color: #fff; margin-right: 5px; text-decoration: none"
+    >
+      </a
+    >
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  
 </mat-toolbar>

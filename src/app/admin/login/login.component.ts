@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit {
       if(data.status == 406) return this.erroralert();        
       localStorage.setItem('token', data.access_token);
       localStorage.setItem('usuario', this.checkoutForm.value.usuario!);
-      this.router.navigate(['/pelicula/lista']);
+      this.router.navigate(['/pelicula/lista']).then(() => {
+        window.location.reload();
+      });      
     });
+    
   }
   erroralert(){
     Swal.fire({
