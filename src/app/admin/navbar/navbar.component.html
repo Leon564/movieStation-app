@@ -26,6 +26,14 @@
     >
     <mat-icon>account_circle</mat-icon>
   </button>
+
+  <button *ngIf="isLog" mat-raised-button color="primary" routerLink="/pelicula/lista"  style="margin-left: 25px;">
+    <a style="color: #fff; margin-right: 5px; text-decoration: none"
+    
+    ></a>
+    <mat-icon>apps</mat-icon>
+  </button>
+
   <button *ngIf="isLog" mat-raised-button color="primary" (click)="logOut()"  style="margin-left: 25px;">
     <a
           
@@ -34,6 +42,6 @@
       </a
     >
     <mat-icon>exit_to_app</mat-icon>
-  </button>
+  </button>  
   
 </mat-toolbar>
