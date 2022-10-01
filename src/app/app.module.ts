@@ -13,7 +13,7 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
 import { NavbarComponent } from './admin/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
+import { BuscadorComponent } from './buscador/buscador.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -33,7 +33,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     CrearPeliculaComponent,
     EditarPeliculaComponent,
     NavbarComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,
