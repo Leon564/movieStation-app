@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterDTO } from 'src/app/dto/register-DTO';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -17,14 +18,15 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   checkoutForm = this.form.group({
-    nombre: '',
-    email: '',
-    usuario: '',
-    contraseña: '',
+    nombre: ['', Validators.required],
+    email: ['', Validators.required],
+    usuario: ['', Validators.required],
+    contraseña: ['', Validators.required],
   });
 
   ngOnInit(): void {}
   register() {
+    if (!this.checkoutForm.valid) return this.alerterrorValid();
     this.service
       .register(
         <RegisterDTO>this.checkoutForm.value,
@@ -36,7 +38,24 @@ export class RegisterComponent implements OnInit {
           alert(data.message);
         }
         if (data.status === 404) return alert('server error');
-        return alert(data.mensaje + ' ' + data.New.usuario);
+        this.alertSuccess();
+        this.router.navigate(['/']);
       });
+  }
+  alerterrorValid(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error al crear el administrador, debe llenar todos los campos',
+      showConfirmButton: true,
+    })
+  }
+  alertSuccess(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Administrador creado con exito',
+      showConfirmButton: true,
+    })
   }
 }

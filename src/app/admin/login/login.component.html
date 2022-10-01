@@ -6,7 +6,7 @@
         <form [formGroup]="checkoutForm" (ngSubmit)="login()">
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile [colspan]="2" [rowspan]="2">
-                    <img src="./assets/img/logo.jpg" alt="logo">
+                    <img src="./assets/img/logo.svg" alt="logo">
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
                     <mat-form-field class="ancho">
@@ -21,7 +21,7 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button type="submit" [disabled]="checkoutForm.invalid" mat-raised-button color="primary" class="ancho">Login</button>
+                    <button type="submit"  mat-raised-button color="primary" class="ancho">Login</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>

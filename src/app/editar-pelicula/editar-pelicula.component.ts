@@ -29,17 +29,16 @@ export class EditarPeliculaComponent implements OnInit {
 
   checkoutForm = this.form.group({
     nombre: ['', Validators.required],
-    portada: '',
-    estreno: '',
-    director: '',
-    sinopsis: '',
-    genero: '',
-    duración: '',
-    trailer: '',
+    portada: ['', Validators.required],
+    estreno: ['', Validators.required],
+    director: ['', Validators.required],
+    sinopsis: ['', Validators.required],
+    genero: ['', Validators.required],
+    duración: ['', Validators.required],
+    trailer: ['', Validators.required],
   });
 
   ngOnInit(): void {
-    //get id from url
     this.paramsubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.service.getOne(this.id).subscribe(
@@ -54,7 +53,8 @@ export class EditarPeliculaComponent implements OnInit {
     });
   }
 
-  crear() {
+  editar() {   
+    if(!this.checkoutForm.valid) return this.alerterrorValid();
     this.service
       .update(
         <PeliculaDTO>this.checkoutForm.value,
@@ -116,4 +116,13 @@ export class EditarPeliculaComponent implements OnInit {
       showConfirmButton: true,
     })
   }
+  alerterrorValid(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error al editar la pelicula, debe llenar todos los campos',
+      showConfirmButton: true,
+    })
+  }
+
 }

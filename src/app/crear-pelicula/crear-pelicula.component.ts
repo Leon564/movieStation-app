@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PeliculaDTO } from '../dto/pelicula-DTO';
 import { AuthService } from '../services/auth/auth.service';
@@ -18,19 +18,20 @@ export class CrearPeliculaComponent implements OnInit {
   constructor(private form:FormBuilder, private service: PeliculasService,private auth:AuthService,private router:Router) { }
   
   checkoutForm = this.form.group({
-    nombre: '',
-    portada: '',
-    estreno:  '',
-    director: '',
-    sinopsis: '',
-    genero: '',
-    duración: '',
-    trailer: '',    
+    nombre: ['',Validators.required],
+    portada: ['',Validators.required],
+    estreno:  ['',Validators.required],
+    director: ['',Validators.required],
+    sinopsis: ['',Validators.required],
+    genero: ['',Validators.required],
+    duración: ['',Validators.required],
+    trailer: ['',Validators.required],    
   });
 
   ngOnInit(): void {
   }
   crear(){
+    if(!this.checkoutForm.valid) return this.alerterrorValid();
     this.service.create(<PeliculaDTO>this.checkoutForm.value, localStorage.getItem("token")!).subscribe((data:any)=>{
       if (data.status === 406) {
         this.auth.logOut();
@@ -68,5 +69,12 @@ export class CrearPeliculaComponent implements OnInit {
       showConfirmButton: true,
     })
   }
-
+  alerterrorValid(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error al crear la pelicula, debe llenar todos los campos',
+      showConfirmButton: true,
+    })
+  }
 }

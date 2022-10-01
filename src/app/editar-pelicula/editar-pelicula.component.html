@@ -3,7 +3,7 @@
         <span>Edicion de pelicula</span>
       </mat-toolbar>
       <mat-card style="margin-top: 10px;">
-        <form [formGroup]="checkoutForm" (ngSubmit)="crear()">
+        <form [formGroup]="checkoutForm" (ngSubmit)="editar()">
             <mat-grid-list cols="2" rowHeight="70px">
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
@@ -54,7 +54,7 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="2" [rowspan]="1">
-                    <button type="submit" [disabled]="checkoutForm.invalid" mat-raised-button color="primary">Guardar</button>
+                    <button type="submit"  mat-raised-button color="primary">Guardar</button>
                 </mat-grid-tile>
             </mat-grid-list>
         </form>

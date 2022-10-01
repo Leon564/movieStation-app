@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    if(!this.checkoutForm.valid) return this.errorNulldata();
     this.service.login(<LoginDTO>this.checkoutForm.value).subscribe((data:any)=>{
       if(data.status == 406) return this.erroralert();        
       localStorage.setItem('token', data.access_token);
@@ -35,6 +36,14 @@ export class LoginComponent implements OnInit {
       position: 'center',
       icon: 'error',
       title: 'Usuario o contraseña invalidos',
+      showConfirmButton: true,
+    })
+  }
+  errorNulldata(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Debe llenar todos los campos',
       showConfirmButton: true,
     })
   }
