@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -50,7 +51,7 @@ import {MatCardModule} from '@angular/material/card';
     MatGridListModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
