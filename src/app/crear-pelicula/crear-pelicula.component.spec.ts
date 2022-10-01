@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CrearPeliculaComponent } from './crear-pelicula.component';
 
@@ -8,9 +11,9 @@ describe('CrearPeliculaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrearPeliculaComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientModule],
+      declarations: [CrearPeliculaComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CrearPeliculaComponent);
     component = fixture.componentInstance;
