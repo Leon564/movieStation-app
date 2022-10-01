@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PeliculaDTO } from '../dto/pelicula-DTO';
 import { AuthService } from '../services/auth/auth.service';
 import { PeliculasService } from '../services/peliculas/peliculas.service';
+import Swal from 'sweetalert2';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-editar-pelicula',
@@ -26,18 +28,17 @@ export class EditarPeliculaComponent implements OnInit {
   }
 
   checkoutForm = this.form.group({
-    nombre: '',
-    portada: '',
-    estreno: '',
-    director: '',
-    sinopsis: '',
-    genero: '',
-    duración: '',
-    trailer: '',
+    nombre: ['', Validators.required],
+    portada: ['', Validators.required],
+    estreno: ['', Validators.required],
+    director: ['', Validators.required],
+    sinopsis: ['', Validators.required],
+    genero: ['', Validators.required],
+    duración: ['', Validators.required],
+    trailer: ['', Validators.required],
   });
 
   ngOnInit(): void {
-    //get id from url
     this.paramsubscription = this.route.params.subscribe((params) => {
       this.id = params['id'];
       this.service.getOne(this.id).subscribe(
@@ -45,14 +46,15 @@ export class EditarPeliculaComponent implements OnInit {
           this.checkoutForm.patchValue(pelicula.obtener);
         },
         (error: any) => {
-          alert('Pelicula no encontrada');
+          this.alertpelicula();
           this.router.navigate(['/']);
         }
       );
     });
   }
 
-  crear() {
+  editar() {   
+    if(!this.checkoutForm.valid) return this.alerterrorValid();
     this.service
       .update(
         <PeliculaDTO>this.checkoutForm.value,
@@ -61,17 +63,66 @@ export class EditarPeliculaComponent implements OnInit {
       )
       .subscribe(
         (data: any) => {         
-          if (data.status === 404) return alert('server error');
-          alert(data.mensaje);
+          if (data.status === 404) return this.alert404();
+          this.alertconfirm();
           this.router.navigate(['/']);
         },
         (error: any) => {
           if (error.status === 401) {
-            alert('sesion expirada');
+            this.alertsesion();
             return this.auth.logOut();            
           }
-          return alert('Error al editar pelicula');
+          return this.alerterror();
         }
-      );
+      )
   }
+  alertpelicula(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'La pelicula no fue encontrada',
+      showConfirmButton: true,
+    })
+  }
+  alert404(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'El servidor no responde',
+      showConfirmButton: true,
+    })
+  }
+  alertconfirm(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Pelicula editada correctamente',
+      showConfirmButton: true,
+    })
+  }
+  alertsesion(){
+    Swal.fire({
+      position: 'center',
+      icon: 'warning',
+      title: 'Su sesion ha expirado, ingrese sesion de nuevo',
+      showConfirmButton: true,
+    })
+  }
+  alerterror(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error al editar la pelicula',
+      showConfirmButton: true,
+    })
+  }
+  alerterrorValid(){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Error al editar la pelicula, debe llenar todos los campos',
+      showConfirmButton: true,
+    })
+  }
+
 }

@@ -1,31 +1,62 @@
-<main class="container-fluid">
-    <!--login form with username an password-->
-    <form [formGroup]="checkoutForm" class="form-signin" (ngSubmit)="crear()">
-        <h2 class="form-signin-heading">Registrar Pelicula</h2>
-        <label for="nombre" class="sr-only">Nombre</label>
-        <input type="text" id="nombre" class="form-control" placeholder="Nombre" required autofocus formControlName="nombre"  name="nombre">
-        
-        <label for="portada" class="sr-only">Portada</label>
-        <input type="text" id="portada" class="form-control" placeholder="Portada" required formControlName="portada"  name="portada">
-        
-        <label for="estreno" class="sr-only">Estreno</label>
-        <input type="text" id="estreno" class="form-control" placeholder="Estreno" required formControlName="estreno"  name="estreno">
-        
-        <label for="director" class="sr-only">Director</label>
-        <input type="text" id="director" class="form-control" placeholder="Director" required formControlName="director"  name="director">
-        
-        <label for="sinopsis" class="sr-only">Sinopsis</label>
-        <textarea type="text" id="sinopsis" class="form-control" placeholder="Sinopsis" required formControlName="sinopsis"  name="sinopsis"></textarea>
-       
-        <label for="genero" class="sr-only">Genero</label>
-        <input type="text" id="genero" class="form-control" placeholder="Genero" required formControlName="genero"  name="genero">
-        
-        <label for="duración" class="sr-only">Duración</label>
-        <input type="text" id="duración" class="form-control" placeholder="Duración" required formControlName="duración"  name="duración">
-        
-        <label for="trailer" class="sr-only">Trailer</label>
-        <input type="text" id="trailer" class="form-control" placeholder="Trailer" required formControlName="trailer"  name="trailer">
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Guardar</button>
-    </form>
-</main>
+<div class="container">
+    <mat-toolbar style="margin-top: 10px;">
+        <span>Edicion de pelicula</span>
+      </mat-toolbar>
+      <mat-card style="margin-top: 10px;">
+        <form [formGroup]="checkoutForm" (ngSubmit)="editar()">
+            <mat-grid-list cols="2" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Portada</mat-label>
+                        <input matInput formControlName="portada">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Estreno</mat-label>
+                        <input matInput formControlName="estreno">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Director</mat-label>
+                        <input matInput formControlName="director">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Sinopsis</mat-label>
+                        <input matInput formControlName="sinopsis">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Genero</mat-label>
+                        <input matInput formControlName="genero">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Duracion</mat-label>
+                        <input matInput formControlName="duración">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Trailer</mat-label>
+                        <input matInput formControlName="trailer">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="1">
+                    <button type="submit"  mat-raised-button color="primary">Guardar</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>
