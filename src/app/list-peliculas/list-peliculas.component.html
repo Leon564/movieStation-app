@@ -1,16 +1,27 @@
 <div class="container-fluid">
   <div class="col-12">
     <h1 class="text-center">
-      <img src="/src/assets/img/logo.jpg" alt="" /> {{ titulo }}
+      <b>{{ titulo }}</b>
     </h1>
-
+    <div style="width: 100%;">
+      <button mat-raised-button color="accent" routerLink="/pelicula/crear"  style="margin-left: 25px;">
+        <a style="color: #fff; margin-right: 5px; text-decoration: none"       
+        > Agregar Pelicula </a>
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-raised-button color="accent" routerLink="/pelicula/crear"  style="margin-left: 25px;">
+        <a style="color: #fff; margin-right: 5px; text-decoration: none"       
+        > Agregar Admin </a>
+        <mat-icon >person_add</mat-icon>
+      </button>
+    </div>
     <table class="table">
       <thead class="table-custom">
         <tr>
           <th scope="col">Id</th>
           <th scope="col" class="text-center">Nombre</th>
-          <th scope="col" class="text-center">Año de lanzamiento</th>
-          <th scope="col" class="text-center">Capitulos</th>
+          <th scope="col" class="text-center">Lanzamiento</th>
+          <th scope="col" class="text-center">Genero</th>
           <th scope="col" class="text-center">Acciones</th>
         </tr>
       </thead>
