@@ -1,3 +1,9 @@
 <div [hidden]="false" class="navbar" style="height: 50px;width: 100%;background-color:blue ;">
-
+   <!--Buscador-->
+   <div  class="float-end">
+        <form [formGroup]="checkoutForm" (ngSubmit)="buscarPelicula()">
+            <input type="text" formControlName="search" placeholder="{{Buscar}}" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
 </div>

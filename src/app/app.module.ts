@@ -23,8 +23,6 @@ import {MatCardModule} from '@angular/material/card';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

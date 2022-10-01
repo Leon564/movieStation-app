@@ -1,0 +1,15 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-2" *ngFor="let pelicula of peliculas">
+        <div class="card">
+            <img class="card-img-top "  height="300px" src="{{ pelicula.portada }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ pelicula.nombre }}</h5>
+                <p class="card-text">{{ (pelicula.sinopsis.length>50)? (pelicula.sinopsis | slice:0:50)+'..':(pelicula.sinopsis)  }}</p>
+                <a href="/pelicula/{{pelicula._id}}" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
